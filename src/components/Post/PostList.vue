@@ -1,10 +1,16 @@
 <template>
-  <post-list-item
-    :post="post"
-    class="post"
-    v-for="(post, i) in posts"
-    :key="i"
-  />
+  <div v-if="posts.length > 0">
+    <post-list-item
+      :post="post"
+      class="post"
+      v-for="post in posts"
+      :key="post.id"
+      @remove="$emit('remove', post)"
+    />
+  </div>
+  <div v-else>
+    <h1>Список постов пуст</h1>
+  </div>
 </template>
 
 <script>
